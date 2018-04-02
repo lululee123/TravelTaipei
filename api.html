@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Lulu Lee">
+    <link rel="stylesheet" href="deco.css">    
+    <title>台北市觀光景點</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="box">
+                <p class="title">整個台北都是我的遊樂場</p>
+            </div>            
+        </header>
+
+        <div class="content">
+           <div class="district">
+                <select onChange="districtChange(this.options[this.selectedIndex].value)">
+                    <option value="#">請選擇</option>
+                    <option value="中正區">中正區</option>
+                    <option value="大同區">大同區</option>
+                    <option value="中山區">中山區</option>
+                    <option value="松山區">松山區</option>
+                    <option value="大安區">大安區</option>
+                    <option value="萬華區">萬華區</option>
+                    <option value="信義區">信義區</option>
+                    <option value="士林區">士林區</option>
+                    <option value="北投區">北投區</option>
+                    <option value="內湖區">內湖區</option>
+                    <option value="南港區">南港區</option>
+                    <option value="文山區">文山區</option>
+                </select>
+           </div> 
+           <div id="posts"></div>
+           <div id="page"></div>
+           <div class="modal">
+                <div class="modal__container">
+                    <header class="modal__header">
+                        <span class="button button--close">&times;</span>
+                        <h2 class="view-title">Modal Header</h2>
+                    </header>
+                    <div class="modal__body">
+                        <img src="" alt="" class="modal__img view-img">
+                        <p><b>景點介紹：</b><p><p class="view-content"></p>
+                        <p><b>地址：</b><span class="view-add"></span><p>                        
+                        <p><b>電話：</b><span class="view-tel"></span><p>
+                        <p><b>開放時間：</b><span class="view-time"></span><p>
+                        <p><b>鄰近捷運站：</b><span class="view-MRT"></span><p>
+                        <p><b>交通資訊：</b><p><p class="view-info"></p>
+                    </div>
+                    <footer class="modal__footer"></footer>
+                </div>
+            </div>
+        </div>   
+
+        <footer class="footer">
+            <p>資料來源:臺北市政府資料開放平台</p>
+        </footer>
+    </div>
+    <script src="api.js"></script>
+</body>
+</html>
