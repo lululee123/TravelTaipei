@@ -49,6 +49,7 @@ body {
   text-align: center;
   font-size: 15px;
   color: #202121;
+  margin-top: 10px;
 }
 .info-box {
   max-width: 330px;
@@ -67,7 +68,7 @@ body {
 .image {
   height: 100%;
 }
-.info-box__span {
+.info-box__stitle {
   font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -144,4 +145,18 @@ body {
   text-decoration: none;
   cursor: pointer;
   user-select: none;
+  
+}
+.page {
+  border-radius: 4px;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 16px;
+  background: white;
+  border: rgb(160, 157, 157);
+  padding: 4px 10px;
+  color: black;
+}
+#page {
+  margin-top: 30px;
 }
