@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <meta name="author" content="Lulu Lee">
     <link rel="stylesheet" href="deco.css">    
     <title>台北市觀光景點</title>
 </head>
 
-<body>
+<body onLoad="typetitle()">
     <div class="container">
         <header class="header">
             <div class="box">
-                <p class="title">整個台北都是我的遊樂場</p>
+                <p id="title"></p>
             </div>            
         </header>
 
         <div class="content">
            <div class="district">
-                <select onChange="districtChange(this.options[this.selectedIndex].value)">
+                <select class="select" onChange="districtChange(this.options[this.selectedIndex].value)">
                     <option value="#">請選擇</option>
                     <option value="中正區">中正區</option>
                     <option value="大同區">大同區</option>
@@ -47,7 +48,8 @@
                     <div class="modal__body">
                         <img src="" alt="" class="modal__img view-img">
                         <p><b>景點介紹：</b><p><p class="view-content"></p>
-                        <p><b>地址：</b><span class="view-add"></span><p>                        
+                        <p><b>地址：</b><span class="view-add"></span><p>
+                        <p><div id="map"></div></p>                       
                         <p><b>電話：</b><span class="view-tel"></span><p>
                         <p><b>開放時間：</b><span class="view-time"></span><p>
                         <p><b>鄰近捷運站：</b><span class="view-MRT"></span><p>
@@ -63,5 +65,6 @@
         </footer>
     </div>
     <script src="api.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbnNwQr6JJxOfiQ_970cGwvz_RuNrgXh8" async defer></script>
 </body>
 </html>

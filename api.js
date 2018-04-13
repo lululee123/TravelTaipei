@@ -9,7 +9,7 @@ function districtChange(data) {
     var ourData = JSON.parse(ourRequest.responseText);
 		receive = ourData.result.results;
 		renderHTML(ourData.result.results, data);
-		$("a.page:first-child").css({background: "#4283E4", color: "white"});	
+		$("a.page:first-child").css({background: "#1b84c9", color: "white"});	
 	};
 	ourRequest.send();
 }
@@ -48,7 +48,7 @@ function renderHTML(receive, check) {
 		`</div>`;
 	}
 	for (var i = 1; i < pageNum + 1; i++){
-		pageHTML += `<a type="button" class="page">${i}</a>`;
+		pageHTML += `<a type="button" class="page page${i}">${i}</a>`;
 	}
 	document.querySelector('#posts').innerHTML = standByHTML;
 	document.querySelector('#page').innerHTML = pageHTML;
@@ -63,7 +63,7 @@ function readMoreButton() {
 				showViewData(e.srcElement.getAttribute('data-viewNo'));
 			}, false);
 		}
-	}
+}
 
 function showViewData(viewNo) {
 	for (var i = 0; i < receive.length; i++) {
@@ -85,6 +85,7 @@ function showViewData(viewNo) {
 	//顯示景點資料框
 	document.querySelector('.modal').style.display = 'block';
 	listenModalClose();
+	codeAddress();
 }
 
 function listenModalClose() {
@@ -103,8 +104,9 @@ function choose(receive, check) {
 	});
 
 }
+
 function chooseHTML(receive, check, choosePage) {
-		$("#page:focus").css({background: "#4283E4", color: "white"});	
+	var page = ".page" + choosePage;
 		document.querySelector('#posts').innerHTML = "";
 		document.querySelector('#page').innerHTML = "";
 		var HTMLString = "";
@@ -135,11 +137,51 @@ function chooseHTML(receive, check, choosePage) {
 			`</div>`;
 		}
 		for (var i = 1; i < pageNum + 1; i++){
-			pageHTML += `<a type="button" class="page">${i}</a>`;
+			pageHTML += `<a type="button" class="page page${i}">${i}</a>`;
 		}
 		document.querySelector('#posts').innerHTML = standByHTML;
 		document.querySelector('#page').innerHTML = pageHTML;
+		$(".page").css({background: "white", color: "black"});
+	  $(page).css({background: "#1b84c9", color: "white"});	
 		readMoreButton();
 }
 
+var geocoder;
+var map;
+function codeAddress() {
+	geocoder = new google.maps.Geocoder();
+	var mapOptions = {
+		zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false
+	}
+	map = new google.maps.Map(document.getElementById('map'), mapOptions);
+	var address = $(".view-add").text();
+	geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == 'OK') {
+			map.setCenter(results[0].geometry.location);
+			var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location
+			});
+		} else {
+			alert('Geocode was not successful for the following reason: ' + status);
+		}
+	});
+}
 
+function typetitle(){
+	var typingText="整個台北都是我的遊樂場";   
+	var count=0;   
+	var show=$("#title");   
+		
+	function type(){   
+			if(count<=typingText.length){   
+					show.html(typingText.substring(0, count));   
+					count++;   
+			}else{   
+					window.clearInterval(typewriter);      
+			}   
+	}   
+	var typewriter=window.setInterval(type ,200);  
+};  
