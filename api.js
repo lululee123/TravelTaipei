@@ -11,7 +11,6 @@ function districtChange(data) {
 		renderHTML(ourData.result.results, data);
 		$("a.page:first-child").css({background: "#1b84c9", color: "white"});	
 	};
-	ourRequest.send();
 }
 
 function renderHTML(receive, check) {
