@@ -4,7 +4,8 @@ var choosePage = "";
 
 function districtChange(data) {
 	var ourRequest = new XMLHttpRequest();
-	ourRequest.open('GET', 'http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=36847f3f-deff-4183-a5bb-800737591de5');
+	//ourRequest.open('GET', 'http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=36847f3f-deff-4183-a5bb-800737591de5');
+	ourRequest.open('GET', 'data.json', true);
 	ourRequest.onload = function() {
     var ourData = JSON.parse(ourRequest.responseText);
 		receive = ourData.result.results;
