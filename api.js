@@ -100,7 +100,8 @@ function listenModalClose() {
 
 function choose(receive, check) {
 	document.querySelector('#page').addEventListener("click", function(e){
-		choosePage = e.path["0"].innerHTML;
+		console.log(e);
+		choosePage = e.target.innerHTML;
 		chooseHTML(receive, check, choosePage)
 	});
 
